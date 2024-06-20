@@ -62,8 +62,8 @@ The arguments to run “train.py” are as follows:
 Example:
 
 ```
-tar -zxvf data/example.tar.gz
-python train.py --input A_50k.txt --epochs 100 --batch_size 32 --lr 0.0001 --latent_dim 5 --seed 0 --output data
+tar -zxvf data/A_50k.tar.gz
+python train.py --input data/A_50k.txt --epochs 100 --batch_size 32 --lr 0.0001 --latent_dim 5 --seed 0 --output data
 ```
 
 # Contact
