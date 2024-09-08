@@ -61,9 +61,23 @@ The arguments to run “train.py” are as follows:
 
 Example:
 
-```
+```bash
 tar -zxvf data/A_50k.tar.gz
-python train.py --input data/A_50k.txt --epochs 100 --batch_size 32 --lr 0.0001 --latent_dim 5 --seed 0 --output data
+python train.py --input ./data/A_50k.txt --epochs 100 --batch_size 32 --lr 0.0001 --latent_dim 5 --seed 0 --output data
+```
+
+# Reproduce the results
+The instructions to reproduce results of scTCA on real datasets (take dataset A as an example) are provided as follows.
+
+```bash
+#BAM file (breast_tissue_A_2k_possorted_bam.bam) of dataset A can be downloaded from https://www.10xgenomics.com/datasets/breast-tissue-nuclei-section-a-2000-cells-1-standard-1-1-0
+#hg19 reference file (hg19.fa.gz) can be downloaded from https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips
+#mappability file (wgEncodeCrgMapabilityAlign36mer.bigWig) can be downloaded from https://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/
+#step 1: get read counts from the BAM file
+./rccae/prep/bin/prepInput -b breast_tissue_A_2k_possorted_bam.bam -r hg19.fa -m wgEncodeCrgMapabilityAlign36mer.bigWig -B ./data/barcode_A.filtered.txt -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 -s 20000 -o ./data/A_20k.txt
+#step 2: perform imputation and data smoothing
+mkdir ./results
+python train.py --input ./data/A_20k.txt --epochs 100 --batch_size 32 --lr 0.0001 --latent_dim 5 --seed 0 --output ./results
 ```
 
 # Contact
