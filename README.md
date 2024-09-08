@@ -56,7 +56,7 @@ The arguments to run “train.py” are as follows:
 | --batch_size   | batch size                                                    | Ex: batch_size=64  default:32      |
 | --lr           | learning rate                                                 | Ex: lr=0.0005  default:0.0001      |
 | --latent_dim   | the latent dimension                                          | Ex: latent_dim=10  default:5       |
-| --max_seg_len  | the maximum length of subsequence for stepwise self attention | Ex: latent_dim=4  default:10       |
+| --max_seg_len  | the maximum length of subsequence for stepwise self attention | Ex: max_seg_len=1000  default:500       |
 | --seed         | random seed (for reproduction of the results)                 | Ex: seed=1  default:0              |
 
 Example:
