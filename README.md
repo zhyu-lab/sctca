@@ -1,4 +1,5 @@
 # scTCA
+
 Imputation and denoising of scDNA-seq data
 
 ## Requirements
@@ -33,6 +34,7 @@ conda activate sctca
 ## Install requirements
 
 ```bash
+pip install torch==1.10.1+cu111 torchvision==0.11.2+cu111 torchaudio==0.10.1 -f https://download.pytorch.org/whl/cu111/torch_stable.html
 python -m pip install -r requirements.txt
 ```
 
@@ -48,16 +50,16 @@ The “train.py” Python script is used to train the model and get reconstructe
 
 The arguments to run “train.py” are as follows:
 
-| Parameter      | Description                                                   | Possible values                    |
-| -------------- | ------------------------------------------------------------- | ---------------------------------- |
-| --input        | input file containing single-cell read counts                 | Ex: /path/to/example.txt           |
-| --output       | a directory to save results                                   | Ex: /path/to/results               |
-| --epochs       | number of epoches to train the scTCA                          | Ex: epochs=300  default:200        |
-| --batch_size   | batch size                                                    | Ex: batch_size=64  default:32      |
-| --lr           | learning rate                                                 | Ex: lr=0.0005  default:0.0001      |
-| --latent_dim   | the latent dimension                                          | Ex: latent_dim=10  default:5       |
-| --max_seg_len  | the maximum length of subsequence for stepwise self attention | Ex: max_seg_len=1000  default:500       |
-| --seed         | random seed (for reproduction of the results)                 | Ex: seed=1  default:0              |
+| Parameter     | Description                                                   | Possible values                   |
+| ------------- | ------------------------------------------------------------- | --------------------------------- |
+| --input       | input file containing single-cell read counts                 | Ex: /path/to/example.txt          |
+| --output      | a directory to save results                                   | Ex: /path/to/results              |
+| --epochs      | number of epoches to train the scTCA                          | Ex: epochs=300  default:200       |
+| --batch_size  | batch size                                                    | Ex: batch_size=64  default:32     |
+| --lr          | learning rate                                                 | Ex: lr=0.0005  default:0.0001     |
+| --latent_dim  | the latent dimension                                          | Ex: latent_dim=10  default:5      |
+| --max_seg_len | the maximum length of subsequence for stepwise self attention | Ex: max_seg_len=1000  default:500 |
+| --seed        | random seed (for reproduction of the results)                 | Ex: seed=1  default:0             |
 
 Example:
 
@@ -67,6 +69,7 @@ python train.py --input ./data/A_50k.txt --epochs 100 --batch_size 32 --lr 0.000
 ```
 
 # Reproduce the results
+
 The instructions to reproduce results of scTCA on real datasets (take dataset A as an example) are provided as follows.
 
 ```bash
