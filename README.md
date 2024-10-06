@@ -77,7 +77,7 @@ The instructions to reproduce results of scTCA on real datasets (take dataset A 
 #hg19 reference file (hg19.fa.gz) can be downloaded from https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips
 #mappability file (wgEncodeCrgMapabilityAlign36mer.bigWig) can be downloaded from https://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/
 #step 1: get read counts from the BAM file
-./rccae/prep/bin/prepInput -b breast_tissue_A_2k_possorted_bam.bam -r hg19.fa -m wgEncodeCrgMapabilityAlign36mer.bigWig -B ./data/barcode_A.filtered.txt -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 -s 20000 -o ./data/A_20k.txt
+./rccae/prep/bin/prepInput -b breast_tissue_A_2k_possorted_bam.bam -r hg19.fa -m wgEncodeCrgMapabilityAlign36mer.bigWig -B ./data/barcode_A.filtered.txt -c 2,3,4,5,6,8,11 -s 20000 -o ./data/A_20k.txt
 #step 2: perform imputation and data smoothing
 mkdir ./results
 python train.py --input ./data/A_20k.txt --epochs 100 --batch_size 32 --lr 0.0001 --latent_dim 5 --seed 0 --output ./results
